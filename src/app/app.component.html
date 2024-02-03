@@ -7,6 +7,11 @@
       <mat-icon   (click)="this.sideNav.close()" *ngIf="sideNav.opened"class="mat-18">close</mat-icon>
     </button>
     <span class="header-name">News Buzz</span>
+    <span class="spacer"></span>
+    <button mat-raised-button  color="primary" class="entertainment-button"  [ngClass]="{'buisness-button-active': buisnessButtonClicked}"(click)="fetchBuisnessData()">Business</button>
+    <button mat-raised-button  color="primary" class="sports-button" [ngClass]="{'sports-button-active': sportsButtonClicked}" (click)="fetchSportsData()">Sports</button>
+    <button mat-raised-button  color="primary" class="entertainment-button"  [ngClass]="{'entertainment-button-active': entertainmentButtonClicked}"(click)="fetchEntertainmentData()">Entertainment</button>
+    
   </mat-toolbar>
 </p>
 
@@ -52,7 +57,7 @@
                             display: -webkit-box;" class="tracking-widest text-gray-800 text-sm">{{article.publishedAt | date:'medium'}}</h4>
                         </div>
                         <h2 class="text-lg text-gray-900 font-medium title-font mb-4 overflow-hidden">{{article.title | short:45}}</h2>
-                        <p class="leading-relaxed text-base" [innerHtml]="article.description"></p><span><a class="text-blue-500" href="{{article.url}}" target="_blank">read more....</a></span>
+                        <p class="leading-relaxed text-base" [innerHtml]="article.description |short:100"></p><span><a class="text-blue-500" href="{{article.url}}" target="_blank">read more....</a></span>
                     </div>
                 </div>
             

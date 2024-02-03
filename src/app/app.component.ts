@@ -3,12 +3,17 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NewsService } from './Service/news.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit, OnInit {
+
+  sportsButtonClicked: boolean = false;
+  entertainmentButtonClicked: boolean = false;
+  buisnessButtonClicked: boolean = false;
   title = 'News';
   public sources: any = [];
   public articles: any = [];
@@ -28,6 +33,8 @@ export class AppComponent implements AfterViewInit, OnInit {
         console.log(res)
         this.sources = res.sources;
       })
+
+    
 
   }
   ngAfterViewInit(): void {
@@ -51,7 +58,48 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.newsApi.getArticleByid(source.id)
     .subscribe((res:any)=>{
       this.selectedNewsChannel = source.name
+      console.log("channel",res);
       this.articles = res.articles;
     })
+  }
+
+  fetchSportsData(): void {
+
+    this.sportsButtonClicked = true;
+    this.entertainmentButtonClicked = false;
+    this.buisnessButtonClicked = false;
+  
+
+    this.newsApi.getSports()
+      .subscribe((res: any) => {
+        this.selectedNewsChannel = " Top Sports News"
+        console.log("sports",res);
+        this.articles=res.articles;
+     
+      });
+  }
+  fetchEntertainmentData(): void {
+    this.entertainmentButtonClicked = true;
+    this.sportsButtonClicked = false;
+    this.buisnessButtonClicked = false;
+    this.newsApi.getEntertainment()
+      .subscribe((res: any) => {
+        this.selectedNewsChannel = "Entertainment News"
+        console.log("entertainment",res);
+        this.articles=res.articles;
+       
+      });
+  }
+  fetchBuisnessData(): void {
+    this.entertainmentButtonClicked = false;
+    this.sportsButtonClicked = false;
+    this.buisnessButtonClicked = true;
+    this.newsApi.getBuisness()
+      .subscribe((res: any) => {
+        this.selectedNewsChannel = "Top Business News"
+        console.log("business",res);
+        this.articles=res.articles;
+      
+      });
   }
 }

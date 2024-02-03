@@ -20,4 +20,15 @@ export class NewsService {
     return this.http.get('https://newsapi.org/v2/top-headlines?sources=' + source + '&apiKey=' + this.api_key)
 
   }
+  getSports(){
+    return this.http.get('https://newsapi.org/v2/top-headlines?category=sports&country=in&apiKey=' + this.api_key)
+  }
+
+  getEntertainment(){
+    return this.http.get('https://newsapi.org/v2/top-headlines?category=entertainment&country=in&apiKey=' + this.api_key)
+  }
+
+  getBuisness(){
+    return this.http.get('https://newsapi.org/v2/top-headlines?category=business&country=in&apiKey=' + this.api_key)
+  }
 }

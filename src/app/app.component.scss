@@ -35,3 +35,32 @@ mat-divider {
 margin-top: -7px;
 margin-left: 10px;;
 }
+.spacer {
+    flex: 0.97;
+  }
+  
+  .sports-button {
+    margin-top: -7px;
+    margin-right: 10px; /* Updated margin-right to move the button to the right */
+  }
+
+  .sports-button-active {
+    border-bottom: 3px solid rgb(246, 248, 246);
+  }
+
+  .entertainment-button {
+    margin-top: -7px;
+    margin-right: 10px; 
+  }
+
+  .entertainment-button-active {
+    border-bottom: 3px solid rgb(246, 248, 246);
+  }
+  .buisness-button {
+    margin-top: -7px;
+    margin-right: 10px; 
+  }
+
+  .buisness-button-active {
+    border-bottom: 3px solid rgb(246, 248, 246);
+  }
